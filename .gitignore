@@ -1,0 +1,14 @@
+# Node modules
+node_modules/
+
+# Environment files
+.env
+
+# OS files
+.DS_Store
+
+# Frontend build folder (React)
+frontend/build/
+
+# Backend build/dist (if any)
+backend/dist/
