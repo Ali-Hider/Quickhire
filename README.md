@@ -81,13 +81,4 @@ Open the frontend UI at `http://localhost:5173` (vite default) and the API runs 
 - Duplicate job entries → make sure the backend is running and client prevents double submits (the admin UI includes a loading guard).
 - Validation errors → server returns `{ success:false, message:"Server error", error: ... }` — check server logs.
 
-**Next steps / Enhancements**
-- Add tests for backend controllers.
-- Add CI/CD and Dockerization for deployment.
-- Add email notifications on application submission.
 
-**Author / Contact**
-- Project workspace: root of this repo. For further changes, edit the files listed above.
-
----
-Generated README created at project root. Update or expand as needed.
