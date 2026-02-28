@@ -5,6 +5,7 @@ const router = express.Router();
 const jobController = require("../controllers/job.controller");
 const validateJob = require("../middleware/validateJob");
 const validateJobId = require("../middleware/validateJobID");
+const isAdmin = require("../middleware/auth");
 
 // GET all jobs with optional filters
 router.get("/", jobController.getAllJobs);
@@ -12,10 +13,8 @@ router.get("/", jobController.getAllJobs);
 // GET single job by ID
 router.get("/:id", validateJobId, jobController.getJobById);
 
-// POST create a new job (Admin)
-router.post("/", validateJob, jobController.createJob);
+router.post("/", isAdmin, jobController.createJob);
+router.put("/:id", isAdmin, jobController.updateJob);
+router.delete("/:id", isAdmin, jobController.deleteJob);
 
-// DELETE job by ID (Admin)
-router.delete("/:id", validateJobId, jobController.deleteJob);
-
-module.exports = router;
+module.exports = router; 

@@ -29,8 +29,23 @@ exports.getJobById = async (req, res) => {
 // POST /api/jobs - create a new job (Admin)
 exports.createJob = async (req, res) => {
   try {
+    console.log("creating job", req.body);
     const job = await Job.create(req.body);
     res.status(201).json({ success: true, data: job });
+  } catch (error) {
+    console.error("error creating job", error);
+    res.status(500).json({ success: false, message: "Server error", error: error.message });
+  }
+};
+
+// PUT /api/jobs/:id - update a job
+exports.updateJob = async (req, res) => {
+  try {
+    const job = await Job.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    res.status(200).json({ success: true, data: job });
   } catch (error) {
     res.status(500).json({ success: false, message: "Server error", error: error.message });
   }
